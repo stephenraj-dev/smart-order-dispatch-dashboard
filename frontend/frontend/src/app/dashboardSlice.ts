@@ -9,7 +9,7 @@ const dashboardSlice = createSlice({
     avgDeliveryTime: 0,
   },
   reducers: {
-    setMetrics: (state, action) => action.payload,
+    setMetrics: (_state, action) => action.payload,
   }
 });
 

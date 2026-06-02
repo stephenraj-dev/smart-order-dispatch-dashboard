@@ -5,7 +5,6 @@ import {
 
 import api from "../../api/axios";
 import {
-  Rider,
   RiderState,
 } from "./riderTypes";
 
