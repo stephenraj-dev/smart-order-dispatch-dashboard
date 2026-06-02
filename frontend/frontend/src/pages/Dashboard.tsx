@@ -16,8 +16,8 @@ export default function Dashboard() {
           absolute
           inset-0
           m-auto
-          w-[800px]
-          h-[800px]
+          w-200
+          h-200
           object-contain
           opacity-100
           pointer-events-none
