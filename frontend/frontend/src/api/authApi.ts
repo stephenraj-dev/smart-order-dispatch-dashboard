@@ -3,7 +3,7 @@ import axios from "axios";
 export const login = async () => {
 
   const response = await axios.post(
-    "http://localhost:5000/auth/login"
+    "https://order-dispatch-dashboard.onrender.com/auth/login"
   );
 
   return response.data;

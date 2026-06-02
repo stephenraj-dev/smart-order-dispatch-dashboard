@@ -6,7 +6,7 @@ export const getAnalytics = async () => {
     localStorage.getItem("token");
 
   const response = await axios.get(
-    "http://localhost:5000/orders/analytics",
+    "https://order-dispatch-dashboard.onrender.com/orders/analytics",
     {
       headers: {
         Authorization: `Bearer ${token}`
