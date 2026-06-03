@@ -105,6 +105,22 @@ export default function OrdersTable() {
     }
   };
 
+  const formatDateTime = (timestamp: string) => {
+    const date = new Date(timestamp);
+
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const year = date.getFullYear();
+
+    const time = date.toLocaleTimeString("en-IN", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+
+    return `${day}-${month}-${year} ${time}`;
+  };
+
   return (
     <div className="rounded-3xl bg-white shadow-lg overflow-hidden">
       {/* Header */}
@@ -295,7 +311,7 @@ export default function OrdersTable() {
                                   </span>
 
                                   <span className="text-sm text-slate-500">
-                                    {t.timestamp}
+                                    {formatDateTime(t.timestamp)}
                                   </span>
                                 </div>
                               </div>
