@@ -29,6 +29,8 @@ export default function OrdersTable() {
 
     socket.on( "order_picked", refreshOrders );
 
+    socket.on("rider_offline", refreshOrders);
+
     return () => {
 
       socket.off( "order_created", refreshOrders );
@@ -38,6 +40,8 @@ export default function OrdersTable() {
       socket.off( "order_failed", refreshOrders );
 
       socket.off( "order_picked", refreshOrders );
+
+      socket.off("rider_offline", refreshOrders);
     };
 
   }, [dispatch]);

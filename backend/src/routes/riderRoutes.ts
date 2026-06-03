@@ -33,54 +33,55 @@ router.post("/:id/status", (req, res) => {
     getDashboardSummary()
   );
 
-  res.json({
-    message: "Rider status updated",
-    rider
-  });
-
+  
   if (status === "offline") {
 
     const activeOrders = orders.filter(
         order =>
-        order.riderId === rider.id &&
+          order.riderId === rider.id &&
         order.status !== "delivered" &&
         order.status !== "failed"
     );
-
+    
     activeOrders.forEach(order => {
-
+      
         const candidates = riders.filter(
           r =>
             r.id !== rider.id &&
-            r.status !== "offline"
+          r.status !== "offline"
         );
-
+        
         const newRider = candidates.sort(
           (a, b) => a.activeOrders - b.activeOrders
         )[0];
-
+        
         if (newRider) {
-
+          
           order.riderId = newRider.id;
-
+          
           newRider.activeOrders++;
           newRider.status = "busy";
-
+          
           order.timeline.push({
             status: "reassigned",
             riderName: newRider.name,
             timestamp: new Date()
           });
-
+          
           getIO().emit("rider_offline", {
             orderId: order.id,
             previousRider: rider.name,
             newRider: newRider.name
           });
         }
+      });
+      rider.activeOrders = 0;
+  }
+
+    res.json({
+      message: "Rider status updated",
+      rider
     });
-    rider.activeOrders = 0;
-    }
 });
 
 export default router;
