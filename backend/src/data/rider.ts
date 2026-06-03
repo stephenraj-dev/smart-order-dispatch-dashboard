@@ -19,7 +19,7 @@ export const riders: Rider[] = [
     id: 3,
     name: "Arun",
     zone: "KK Nagar",
-    status: "busy",
+    status: "available",
     activeOrders: 0
   },
   {
