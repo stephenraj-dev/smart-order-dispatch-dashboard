@@ -13,10 +13,12 @@ export const orders: Order[] = [
     timeline: [
       {
         status: "created",
+        riderName: "Ravi",
         timestamp: new Date()
       },
       {
         status: "assigned",
+        riderName: "Ravi",
         timestamp: new Date()
       }
     ]

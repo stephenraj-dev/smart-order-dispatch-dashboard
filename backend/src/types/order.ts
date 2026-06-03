@@ -21,7 +21,7 @@ export interface Order {
 
   timeline: {
     status: string;
-    riderName: string;
+    riderName?: string;
     timestamp: Date;
   }[];
 }
