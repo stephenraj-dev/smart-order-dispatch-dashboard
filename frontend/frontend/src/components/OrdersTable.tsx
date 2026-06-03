@@ -46,15 +46,15 @@ export default function OrdersTable() {
 
   }, [dispatch]);
 
-  if (loading) {
-    return (
-      <div className="flex justify-center py-10">
-        <div className="text-slate-500 font-medium">
-          Loading orders...
-        </div>
+  if (loading && orders.length === 0) {
+  return (
+    <div className="flex justify-center py-10">
+      <div className="text-slate-500 font-medium">
+        Loading orders...
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   if (orders.length === 0) {
     return (

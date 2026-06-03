@@ -57,8 +57,7 @@ const dashboardSlice = createSlice({
 
       .addCase(
         fetchDashboardSummary.pending,
-        state => {
-          state.loading = true;
+        _state => {
         }
       )
 
