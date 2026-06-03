@@ -310,6 +310,12 @@ export default function OrdersTable() {
                                     {t.status}
                                   </span>
 
+                                  {t.riderName && (
+                                    <span className="text-sm text-blue-600">
+                                      Rider: {t.riderName}
+                                    </span>
+                                  )}
+
                                   <span className="text-sm text-slate-500">
                                     {formatDateTime(t.timestamp)}
                                   </span>

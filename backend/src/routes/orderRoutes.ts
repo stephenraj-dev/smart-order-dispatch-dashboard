@@ -42,10 +42,12 @@ router.post("/", (req, res) => {
     timeline: [
       {
         status: "created",
+        riderName: rider.name,
         timestamp: new Date()
       },
       {
         status: "assigned",
+        riderName: rider.name,
         timestamp: new Date()
       }
     ]
@@ -324,6 +326,7 @@ router.patch("/:id/status", (req, res) => {
 
   order.timeline.push({
     status,
+    riderName: rider.name,
     timestamp: new Date()
   });
 
@@ -380,8 +383,9 @@ router.patch("/:id/status", (req, res) => {
         }
 
     order.timeline.push({
-        status: "reassigned",
-        timestamp: new Date()
+      status: "reassigned",
+      riderName: retryRider.name,
+      timestamp: new Date()
     });
 
     getIO().emit("order_failed", {
