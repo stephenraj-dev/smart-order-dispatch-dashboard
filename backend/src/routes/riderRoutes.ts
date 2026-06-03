@@ -61,16 +61,22 @@ router.post("/:id/status", (req, res) => {
 
         if (newRider) {
 
-        order.riderId = newRider.id;
+          order.riderId = newRider.id;
 
-        newRider.activeOrders++;
-        newRider.status = "busy";
+          newRider.activeOrders++;
+          newRider.status = "busy";
 
-        getIO().emit("rider_offline", {
+          order.timeline.push({
+            status: "reassigned",
+            riderName: newRider.name,
+            timestamp: new Date()
+          });
+
+          getIO().emit("rider_offline", {
             orderId: order.id,
             previousRider: rider.name,
             newRider: newRider.name
-        });
+          });
         }
     });
     rider.activeOrders = 0;
