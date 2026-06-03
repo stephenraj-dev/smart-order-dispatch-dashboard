@@ -13,14 +13,14 @@ export const riders: Rider[] = [
     name: "Kumar",
     zone: "T Nagar",
     status: "available",
-    activeOrders: 1
+    activeOrders: 0
   },
   {
     id: 3,
     name: "Arun",
     zone: "KK Nagar",
     status: "busy",
-    activeOrders: 2
+    activeOrders: 0
   },
   {
     id: 4,

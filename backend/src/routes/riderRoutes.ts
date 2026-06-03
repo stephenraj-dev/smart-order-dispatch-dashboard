@@ -69,6 +69,7 @@ router.post("/:id/status", (req, res) => {
         });
         }
     });
+    rider.activeOrders = 0;
     }
 });
 
