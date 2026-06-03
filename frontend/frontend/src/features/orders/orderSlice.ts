@@ -56,7 +56,14 @@ export const createOrder = createAsyncThunk(
 const orderSlice = createSlice({
   name: "orders",
   initialState,
-  reducers: {},
+  reducers: {
+    addOrder: (state, action) => {
+      const exists = state.orders.find(o => o.id === action.payload.id);
+      if (!exists) {
+        state.orders.push(action.payload);
+      }
+    }
+  },
 
   extraReducers: (builder) => {
     builder
@@ -102,4 +109,5 @@ const orderSlice = createSlice({
   },
 });
 
+export const { addOrder } = orderSlice.actions;
 export default orderSlice.reducer;

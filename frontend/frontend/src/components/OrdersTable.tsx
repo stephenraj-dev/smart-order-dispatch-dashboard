@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch } from "../hooks/reduxHooks";
 import { useAppSelector } from "../hooks/reduxHooks";
-import { fetchOrders } from "../features/orders/orderSlice";
+import { fetchOrders, addOrder } from "../features/orders/orderSlice";
 import { socket } from "../socket/socket";
 import { updateOrderStatus } from "../api/orderServicesApi";
 
@@ -21,7 +21,11 @@ export default function OrdersTable() {
       dispatch(fetchOrders());
     };
 
-    socket.on( "order_created", refreshOrders );
+    const handleOrderCreated = (newOrder: any) => {
+      dispatch(addOrder(newOrder));
+    };
+
+    socket.on( "order_created", handleOrderCreated );
 
     socket.on( "order_delivered", refreshOrders );
 
@@ -33,7 +37,7 @@ export default function OrdersTable() {
 
     return () => {
 
-      socket.off( "order_created", refreshOrders );
+      socket.off( "order_created", handleOrderCreated );
 
       socket.off("order_delivered", refreshOrders );
 
