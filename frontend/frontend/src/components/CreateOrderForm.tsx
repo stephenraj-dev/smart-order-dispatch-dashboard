@@ -47,7 +47,6 @@ export default function CreateOrderForm() {
       </div>
 
       <form
-        onSubmit={handleCreateOrder}
         className="space-y-5"
       >
         {/* Customer Name */}
@@ -164,7 +163,8 @@ export default function CreateOrderForm() {
 
         {/* Submit */}
         <button
-          type="submit"
+          type="button"
+          onClick={handleCreateOrder}
           className="w-full rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700 active:scale-[0.98]"
         >
           Create Order
