@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch } from "../hooks/reduxHooks";
 import { useAppSelector } from "../hooks/reduxHooks";
 import { fetchOrders } from "../features/orders/orderSlice";
@@ -166,9 +166,8 @@ export default function OrdersTable() {
 
           <tbody>
             {sortedOrders.map((order) => (
-              <>
+              <React.Fragment key={order.id}>
                 <tr
-                  key={order.id}
                   onClick={() =>
                     setExpandedId(
                       expandedId === order.id ? null : order.id
@@ -332,7 +331,7 @@ export default function OrdersTable() {
                     </td>
                   </tr>
                 )}
-              </>
+              </React.Fragment>
             ))}
           </tbody>
         </table>
