@@ -49,11 +49,15 @@ router.post("/:id/status", (req, res) => {
 
     activeOrders.forEach(order => {
 
-        const newRider = riders.find(
-        r =>
+        const candidates = riders.filter(
+          r =>
             r.id !== rider.id &&
-            r.status === "available"
+            r.status !== "offline"
         );
+
+        const newRider = candidates.sort(
+          (a, b) => a.activeOrders - b.activeOrders
+        )[0];
 
         if (newRider) {
 
